@@ -54,6 +54,8 @@ sudo apt-get update
 sudo apt-get install python3-catkin-tools
 
 sudo apt-get install -y ros-noetic-move-base-msgs
+
+sudo apt install libqt5svg5-dev
 ```
 - QtCreator => New project => Other project => ROS workspace
 
