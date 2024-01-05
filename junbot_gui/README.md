@@ -26,19 +26,7 @@ qmake => make => make install
 
 ## Config ROS plugin for QtCreator
 
-1. Add Pugin
-
-[Link](https://github.com/ros-industrial/ros_qtc_plugin#plugin-installation)
-
-```
-sudo apt install libarchive-tools # needed for bsdtar
-export QTC_ROOT=~/Qt/Tools/QtCreator # online installer
-# export QTC_ROOT=~/qtcreator-6.0.0 # offline installer
-export PLUGIN_URL=`curl -s https://api.github.com/repos/ros-industrial/ros_qtc_plugin/releases/latest | grep -E 'browser_download_url.*ROSProjectManager-.*-Linux-.*.zip' | cut -d'"' -f 4`
-curl -SL $PLUGIN_URL | bsdtar -xzf - -C $QTC_ROOT
-```
-
-2. Config workspace
+1. Config workspace
 
 - Install catkin_tools
 
@@ -57,13 +45,10 @@ sudo apt-get install -y ros-noetic-move-base-msgs
 
 sudo apt install libqt5svg5-dev
 ```
-- QtCreator => New project => Other project => ROS workspace
 
-- Build 
+2. Run test with TurtleBot 3 simulation
 
-3. Run test with TurtleBot 3 simulation
-
-3.1. Run Turtlebot 3 simulation
+2.1. Run Turtlebot 3 simulation
 
 <b> Note </b>: You need run SLAM before this step (if you do not have a map)
 
@@ -77,7 +62,7 @@ export TURTLEBOT3_MODEL=burger
 roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
 ```
 
-3.2. Run app
+2.2. Run app
 
 ```
 rosrun junbot_gui junbot_gui
