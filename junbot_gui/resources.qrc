@@ -175,6 +175,7 @@
         <file>data/background/dawn.jpg</file>
         <file>data/background/test.jpg</file>
         <file>data/background/createUser_background.jpg</file>
+        <file>data/background/aet_backgound.jpeg</file>
         <file>data/background/viettel_background.jpg</file>
     </qresource>
     <qresource prefix="/database">

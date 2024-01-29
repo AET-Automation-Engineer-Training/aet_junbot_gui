@@ -78,7 +78,7 @@ padding:0;
          </rect>
         </property>
         <property name="styleSheet">
-         <string notr="true">border-image: url(:/background/data/background/createUser_background.jpg);</string>
+         <string notr="true">border-image: url(:/background/data/background/aet_backgound.jpeg);</string>
         </property>
         <property name="text">
          <string/>
@@ -541,7 +541,7 @@ padding-left: 12px;</string>
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/background/data/background/viettel_background.jpg);</string>
+       <string notr="true">border-image: url(:/background/data/background/aet_backgound.jpeg);</string>
       </property>
       <property name="text">
        <string/>
@@ -618,7 +618,7 @@ padding-left: 12px;</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/image/data/images/VMC_Logo.png);</string>
+        <string notr="true">border-image: url(:/image/data/images/aet_backgound.jpeg);</string>
        </property>
        <property name="text">
         <string/>
@@ -846,7 +846,7 @@ padding-left: 12px;</string>
        </font>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/background/data/background/viettel_background.jpg);</string>
+       <string notr="true">border-image: url(:/background/data/background/aet_backgound.jpeg);</string>
       </property>
       <property name="text">
        <string/>
@@ -915,7 +915,7 @@ padding-left: 12px;</string>
         </rect>
        </property>
        <property name="styleSheet">
-        <string notr="true">border-image: url(:/image/data/images/VMC_Logo.png);</string>
+        <string notr="true">border-image: url(:/image/data/images/aet_backgound.jpeg);</string>
        </property>
        <property name="text">
         <string/>

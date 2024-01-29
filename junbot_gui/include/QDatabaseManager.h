@@ -19,7 +19,7 @@
 class QSqlDatabase;
 class QSqlQuery;
 
-const QString DATABASE_FILENAME = "/home/junbot/junbot_ws/src/JunBot/junbot_gui/data/user.db";
+const QString DATABASE_FILENAME = "/home/lacie/workspace/aet_ws/src/ate_junbot_gui/junbot_gui/data/user.db";
 
 class QDatabaseManager
 {
@@ -44,3 +44,6 @@ private:
 };
 
 #endif // QDATABASEMANAGER_H
+
+
+
