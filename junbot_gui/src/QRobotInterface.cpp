@@ -70,10 +70,10 @@ for(int i = 0; i < m_targetButton.size(); i++){
 
   connect(ui->remove_btn, &QPushButton::clicked, this, &RobotInterface::slotRemoveTarget);
 
-  connect(ui->slotTarget_1, &QPushButton::clicked, this, [=](){
-        CONSOLE << "slot 3";
-        m_targetSelected = 1;
-  });
+  // connect(ui->slotTarget_1, &QPushButton::clicked, this, [=](){
+  //       CONSOLE << "slot 3";
+  //       m_targetSelected = 1;
+  // });
 
   connect(ui->slotTarget_2, &QPushButton::clicked, this, [=](){
         CONSOLE << "slot 2";
@@ -172,12 +172,12 @@ void RobotInterface::slotRemoveTarget()
 void RobotInterface::removeTarget(int i)
 {
   CONSOLE << "Remove " << i;
-  if(i == 1 && (ui->slotTarget_1->text() != "+"))
-  {
-    slot_target[3 - i] = QDeliveryTarget("+"); 
-    updateTagerSlotUI();
-  }
-  else if(i == 2 && (ui->slotTarget_2->text() != "+"))
+  // if(i == 1 && (ui->slotTarget_1->text() != "+"))
+  // {
+  //   slot_target[3 - i] = QDeliveryTarget("+"); 
+  //   updateTagerSlotUI();
+  // }
+  if(i == 2 && (ui->slotTarget_2->text() != "+"))
   {
     slot_target[3 - i] = QDeliveryTarget("+");
     updateTagerSlotUI();
@@ -234,7 +234,7 @@ void RobotInterface::updateTagerSlotUI()
 
     ui->slotTarget_3->setText(slot_target[0].name());
     ui->slotTarget_2->setText(slot_target[1].name());
-    ui->slotTarget_1->setText(slot_target[2].name());
+    // ui->slotTarget_1->setText(slot_target[2].name());
 }
 
 void RobotInterface::updateTargetSlot(QDeliveryTarget target)
@@ -246,7 +246,7 @@ void RobotInterface::updateTargetSlot(QDeliveryTarget target)
         slot_target[i] = target;
         ui->slotTarget_3->setText(slot_target[0].name());
         ui->slotTarget_2->setText(slot_target[1].name());
-        ui->slotTarget_1->setText(slot_target[2].name());
+        // ui->slotTarget_1->setText(slot_target[2].name());
         return;
       }
   }
