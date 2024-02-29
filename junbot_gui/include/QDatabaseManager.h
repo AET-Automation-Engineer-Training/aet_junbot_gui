@@ -19,6 +19,8 @@
 class QSqlDatabase;
 class QSqlQuery;
 
+// const QString DATABASE_FILENAME = BUILD_DIR + "/data/user.db";
+
 const QString DATABASE_FILENAME = "/home/lacie/workspace/aet_ws/src/ate_junbot_gui/junbot_gui/data/user.db";
 
 class QDatabaseManager
@@ -29,7 +31,7 @@ public:
 
     QDatabaseManager(const QString& path = DATABASE_FILENAME);
 
-    static QDatabaseManager& instance();
+    static QDatabaseManager& instance(char* path = nullptr);
     ~QDatabaseManager();
 
 protected:

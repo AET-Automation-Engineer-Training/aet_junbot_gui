@@ -63,7 +63,7 @@ public:
 
     bool set_goal_once(QString frame, QRobotPose goal, int idx, int targetId);
 
-    bool set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::vector<int> targetId);
+    bool set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::vector<int> targetId, int loopTime = 0);
 
     void cancel_goal();
 

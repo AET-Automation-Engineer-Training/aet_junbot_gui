@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
+    CONSOLE << argc << argv[1];
     QApplication app(argc, argv);
     QLoginWidget w(argc, argv);
     w.show();

@@ -20,9 +20,9 @@ void QDatabaseManager::debugQuery(const QSqlQuery& query)
     }
 }
 
-QDatabaseManager& QDatabaseManager::instance()
+QDatabaseManager& QDatabaseManager::instance(char* path)
 {
-    static QDatabaseManager instance;
+    static QDatabaseManager instance = QDatabaseManager(path);
     CONSOLE << "QDatabaseManager Init";
     return instance;
 }
@@ -32,7 +32,9 @@ QDatabaseManager::QDatabaseManager(const QString& path)
       deliveryTargetDao(*m_database)
 
 {
-    m_database->setDatabaseName("/home/onbat2/junbot_gui_ws/src/JunBot/junbot_gui/data/user.db");
+    CONSOLE << "Database path: " << path;
+
+    m_database->setDatabaseName(path);
 
     bool openStatus = m_database->open();
     CONSOLE << "Database connection: " << (openStatus ? "OK" : "Error");

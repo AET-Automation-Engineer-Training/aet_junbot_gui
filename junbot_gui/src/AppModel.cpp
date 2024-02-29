@@ -6,7 +6,7 @@ std::mutex AppModel::m_mutex;
 AppModel::AppModel(int argc, char **argv, QObject *parent)
     : QObject(parent)
     , m_rosNode(argc, argv)
-    , m_dbManager(QDatabaseManager::instance())
+    , m_dbManager(QDatabaseManager::instance(argv[1]))
     // , m_currentUser(nullptr)
 {
     CONSOLE << "App Init";

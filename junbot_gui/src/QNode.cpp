@@ -66,6 +66,7 @@ bool QNode::init() {
     if (!ros::master::check()) {
         return false;
     }
+
     ros::start();  // explicitly needed since our nodehandle is going out of
     // scope.
     SubAndPubTopic();
@@ -316,7 +317,7 @@ bool QNode::set_goal_once(QString frame, QRobotPose goal, int idx, int target_id
     return true;
 }
 
-bool QNode::set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::vector<int> target_id)
+bool QNode::set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::vector<int> target_id, int loopTime)
 {
     // TODO: Update find optimal path ????
     m_goals = goals;
@@ -324,12 +325,36 @@ bool QNode::set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::ve
     m_goal_frame = frame;
     m_current_goals_id = 0;
 
+    if (m_goals.size() == 0)
+    {
+        return false;
+    }
+
     CONSOLE << target_id.size();
     CONSOLE << goals.size();
+    CONSOLE << loopTime;
 
-    bool check = set_goal_once(m_goal_frame, 
-                                m_goals[m_current_goals_id], 
-                                m_current_goals_id, m_targetIds[m_current_goals_id]);
+    // TODO: Add loopTime for loop
+    if (loopTime > 0)
+    {
+        for (int i = 0; i < loopTime; i++)
+        {
+            for (int j = 0; j < goals.size(); j++)
+            {
+                bool check = set_goal_once(m_goal_frame, goals[j], j, target_id[j]);
+            }
+
+            bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
+        }
+    }
+    else
+    {
+        bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
+    }
+
+    // bool check = set_goal_once(m_goal_frame, 
+    //                             m_goals[m_current_goals_id], 
+    //                             m_current_goals_id, m_targetIds[m_current_goals_id]);
 
     // for (auto goal : goals)
     // {

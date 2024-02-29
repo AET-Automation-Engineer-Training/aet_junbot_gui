@@ -339,7 +339,7 @@
     <widget class="QPushButton" name="slotTarget_2">
      <property name="geometry">
       <rect>
-       <x>170</x>
+       <x>150</x>
        <y>30</y>
        <width>101</width>
        <height>61</height>
@@ -370,16 +370,6 @@
      </property>
      <property name="text">
       <string>+</string>
-     </property>
-    </widget>
-    <widget class="QTextBrowser" name="loopTime">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>40</y>
-       <width>51</width>
-       <height>41</height>
-      </rect>
      </property>
     </widget>
     <widget class="QGroupBox" name="groupBox">
@@ -437,6 +427,16 @@
      </property>
      <property name="text">
       <string>Run</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="loopTime">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>40</y>
+       <width>51</width>
+       <height>41</height>
+      </rect>
      </property>
     </widget>
    </widget>

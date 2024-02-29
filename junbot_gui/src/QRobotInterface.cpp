@@ -133,6 +133,8 @@ void RobotInterface::slotRun()
 { 
   std::vector<QRobotPose> goals;
   std::vector<int> goals_Id;
+  int loopTime = 0;
+
   for(int i = 0; i < slot_target.size(); i++){
     
     if(slot_target[i].name() == "+") continue;
@@ -148,11 +150,22 @@ void RobotInterface::slotRun()
     goals_Id.push_back(i + 1);
   }
 
+  if (goals.size() == 0) {
+    QMessageBox::information(this, "Notification", "No target to run", QMessageBox::Ok);
+    return;
+  }
+  else if (goals.size() == 1) {
+    loopTime = 1;
+  }
+  else {
+    loopTime = ui->loopTime->value();
+  }
+
   CONSOLE << goals.size();
 
   bool check = false;
 
-  check = m_model->m_rosNode.set_multi_goal("Frame", goals, goals_Id);
+  check = m_model->m_rosNode.set_multi_goal("Frame", goals, goals_Id, loopTime);
 }
 
 void RobotInterface::runNextTarget()

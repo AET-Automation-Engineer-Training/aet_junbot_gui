@@ -1,0 +1,6 @@
+<launch>
+    <arg name="database_path" default="$(find junbot_gui)/data/user.db" />
+
+    <node name="junbot_gui" type="junbot_gui" pkg="junbot_gui" output="screen" args = "$(arg database_path)" />
+    
+</launch>
