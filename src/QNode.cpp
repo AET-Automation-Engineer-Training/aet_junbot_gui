@@ -334,24 +334,44 @@ bool QNode::set_multi_goal(QString frame, std::vector<QRobotPose> goals, std::ve
     CONSOLE << goals.size();
     CONSOLE << loopTime;
 
+    QJsonObject jobj;
+    
+    jobj["id1"] = target_id[0];
+    jobj["id2"] = target_id[1];
+    jobj["target1_x"] = goals[0].x;
+    jobj["target1_y"] = goals[0].y;
+    jobj["target1_w"] = goals[0].theta;
+    jobj["target2_x"] = goals[1].x;
+    jobj["target2_y"] = goals[1].y;
+    jobj["target2_w"] = goals[1].theta;
+    jobj["loopTime"] = loopTime;
+    
+    QString jString = QJsonDocument(jobj).toJson(QJsonDocument::Compact);
+
+    std_msgs::String tmp_msg;
+    tmp_msg.data = jString.toStdString();
+    m_robotTargetIdPub.publish(tmp_msg);
+    
+
     // TODO: Add loopTime for loop
-    if (loopTime > 0)
-    {
-        for (int i = 0; i < loopTime; i++)
-        {
-            for (int j = 0; j < goals.size(); j++)
-            {
-                bool check = set_goal_once(m_goal_frame, goals[j], j, target_id[j]);
-            }
+    // if (loopTime > 0)
+    // {
+    //     for (int i = 0; i < loopTime; i++)
+    //     {
+    //         for (int j = 0; j < goals.size(); j++)
+    //         {
+    //             bool check = set_goal_once(m_goal_frame, goals[j], j, target_id[j]);
+    //         }
 
-            bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
-        }
-    }
-    else
-    {
-        bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
-    }
-
+    //         bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
+    //     }
+    // }
+    // else
+    // {
+    //     bool check = set_goal_once(m_goal_frame, goals[0], 0, target_id[0]);
+    // }
+    
+    
     // bool check = set_goal_once(m_goal_frame, 
     //                             m_goals[m_current_goals_id], 
     //                             m_current_goals_id, m_targetIds[m_current_goals_id]);
