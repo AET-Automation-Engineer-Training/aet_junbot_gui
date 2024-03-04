@@ -131,6 +131,7 @@ private:
     ros::Publisher m_robotStatePub;
     ros::Publisher m_robotTargetIdPub;
     ros::Publisher m_MissionStart;
+    ros::Publisher m_cancelGoal;
     image_transport::Publisher m_imageMapPub;
 
     // MoveBaseClient *movebase_client;
@@ -156,6 +157,7 @@ private:
     QString obstacles_topic;
     QString mission_topic;
     QString targetReach_topic;
+    QString cancel_goal_topic;
 
     std::string path_topic;
     QPolygon mapPonits;

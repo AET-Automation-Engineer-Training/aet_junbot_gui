@@ -22,6 +22,7 @@ QNode::QNode(int argc, char **argv)
     targetId_topic = "robot_target_id";
     obstacles_topic = "object_detected";
     mission_topic = "mission_started";
+    cancel_goal_topic = "mission_cancel";
     targetReach_topic = "goal_arrived";
     
     // initPose_topic =
@@ -132,6 +133,8 @@ void QNode::SubAndPubTopic() {
     m_robotStatePub = n.advertise<std_msgs::String>(robotState_topic.toStdString(), 10);
 
     m_robotTargetIdPub = n.advertise<std_msgs::String>(targetId_topic.toStdString(), 10);
+
+    m_cancelGoal = n.advertise<std_msgs::String>(cancel_goal_topic.toStdString(), 10);
 
     m_robotPoselistener = new tf::TransformListener;
     m_Laserlistener = new tf::TransformListener;
@@ -438,7 +441,7 @@ void QNode::cancel_goal() {
 
     std_msgs::String tmp_msg;
     tmp_msg.data = jString.toStdString();
-    m_robotTargetIdPub.publish(tmp_msg);
+    m_cancelGoal.publish(tmp_msg);
 }
 
 void QNode::speedCallback(const nav_msgs::Odometry::ConstPtr &msg) {
