@@ -525,6 +525,13 @@ void RobotInterface::connections()
 
   // Having Mission State
   connect(this, &RobotInterface::updateMissionStatus, m_model, &AppModel::havingMissionStatus);
+  connect(&m_model->m_rosNode, &QNode::updateAllGoalDone, this, [=](){
+    QMessageBox::information(this, "Notification", "All target done", QMessageBox::Ok);
+    
+    emit updateMissionStatus(0);
+    emit updateControllingStatus(1);
+    
+  });
 
   //Battery Voltage
   // connect(&m_model->m_rosNode, &QNode::updateBatteryVoltage, this, &RobotInterface::slot_batteryVoltage);

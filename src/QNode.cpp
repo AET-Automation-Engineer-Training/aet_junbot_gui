@@ -399,7 +399,8 @@ void QNode::targetArrivedCallback(const std_msgs::String &message)
 
     if(tmp_state == "done")
     {
-        emit updateGoalReached(m_current_goals_id);
+        // emit updateGoalReached(m_current_goals_id);
+        emit updateAllGoalDone();
     }
     else
     {
@@ -409,6 +410,15 @@ void QNode::targetArrivedCallback(const std_msgs::String &message)
 
 void QNode::cancel_goal() {
     // movebase_client->cancelAllGoals();
+    QJsonObject jobj;
+    
+    jobj["cmd"] = "cancel";
+
+    QString jString = QJsonDocument(jobj).toJson(QJsonDocument::Compact);
+
+    std_msgs::String tmp_msg;
+    tmp_msg.data = jString.toStdString();
+    m_robotTargetIdPub.publish(tmp_msg);
 }
 
 void QNode::speedCallback(const nav_msgs::Odometry::ConstPtr &msg) {
@@ -522,3 +532,4 @@ void QNode::log(const AppEnums::QLogLevel &level, const std::string &msg) {
                           new_row);
     emit loggingUpdated();  // used to readjust the scrollbar
 }
+
