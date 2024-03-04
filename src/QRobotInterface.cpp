@@ -528,6 +528,14 @@ void RobotInterface::connections()
   connect(&m_model->m_rosNode, &QNode::updateAllGoalDone, this, [=](){
     QMessageBox::information(this, "Notification", "All target done", QMessageBox::Ok);
     
+    // Clear all target
+    for(int i = 1; i < 3; i++)
+    {
+      removeTarget(i);
+    }
+
+    this->ui->loopTime->setValue(1);
+
     emit updateMissionStatus(0);
     emit updateControllingStatus(1);
     
