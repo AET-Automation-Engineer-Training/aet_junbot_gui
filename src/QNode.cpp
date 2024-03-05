@@ -20,7 +20,7 @@ QNode::QNode(int argc, char **argv)
     robotDiagnostics_topic = "junbot_diagnostics";
     robotState_topic = "robot_status";
     targetId_topic = "robot_target_id";
-    obstacles_topic = " warning_person";
+    obstacles_topic = "warning_person";
     mission_topic = "mission_started";
     cancel_goal_topic = "mission_cancel";
     targetReach_topic = "goal_arrived";
@@ -413,21 +413,21 @@ void QNode::targetArrivedCallback(const std_msgs::String &message)
     CONSOLE << "target arrived callback";
     CONSOLE << message.data.c_str();
 
-    QString tmp = QString::fromStdString(message.data.c_str());
+    // QString tmp = QString::fromStdString(message.data.c_str());
+    std::string tmp = message.data.c_str();
+    // QJsonDocument json_tmp = QJsonDocument::fromJson(tmp.toUtf8());
 
-    QJsonDocument json_tmp = QJsonDocument::fromJson(tmp.toUtf8());
-
-    QString tmp_state = json_tmp["status"].toString();
-    QString tmp_id = json_tmp["id"].toString();
-
-    if(tmp_state == "done")
+    // QString tmp_state = json_tmp["status"].toString();
+    // QString tmp_id = json_tmp["id"].toString();
+    if(tmp== "done")
     {
         // emit updateGoalReached(m_current_goals_id);
+        CONSOLE << "Target " << "SUCCESS"; 
         emit updateAllGoalDone();
     }
     else
     {
-        CONSOLE << "Target " << tmp_id << "failed"; 
+        CONSOLE << "Target " << "failed"; 
     }  
 }
 

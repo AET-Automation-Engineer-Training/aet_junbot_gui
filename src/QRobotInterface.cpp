@@ -529,7 +529,7 @@ void RobotInterface::connections()
     QMessageBox::information(this, "Notification", "All target done", QMessageBox::Ok);
     
     // Clear all target
-    for(int i = 1; i < 3; i++)
+    for(int i = 0; i < 3; i++)
     {
       removeTarget(i);
     }
