@@ -335,9 +335,23 @@ void AppModel::batteryStatus(float battery)
 
 void AppModel::checkObstacle(QString id)
 {
-    if(id == "0")
+    if(id == "warning")
     {
         is_obstacle = AppEnums::QObstacle::Human;
+
+        CONSOLE << "HUMAN !!!!";
+
+        QJsonObject jobj;
+        m_dateTime = QDateTime::currentDateTime();
+    
+        jobj["obstacle"] = id;
+        jobj["time"] = m_dateTime.toString("dd.MM.yyyy hh:mm:ss");
+
+        QJsonDocument jSub = QJsonDocument(jobj);
+
+        QString jString = QJsonDocument(jobj).toJson(QJsonDocument::Compact);
+        m_handler->MQTT_Publish("robot/obstacle", jobj);
+
         emit obstacleUpdateUi(AppEnums::QObstacle::Human);
     }
     else 

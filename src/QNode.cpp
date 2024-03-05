@@ -20,7 +20,7 @@ QNode::QNode(int argc, char **argv)
     robotDiagnostics_topic = "junbot_diagnostics";
     robotState_topic = "robot_status";
     targetId_topic = "robot_target_id";
-    obstacles_topic = "object_detected";
+    obstacles_topic = " warning_person";
     mission_topic = "mission_started";
     cancel_goal_topic = "mission_cancel";
     targetReach_topic = "goal_arrived";
