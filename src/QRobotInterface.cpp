@@ -511,7 +511,7 @@ void RobotInterface::connections()
   connect(m_model, &AppModel::signalRobotMissionStatusChanged, this, &RobotInterface::slot_updateRobotMissonStatus);
 
   // Obstacle status
-  // connect(&m_model->m_rosNode, &QNode::obstacleUpdate, m_model, &AppModel::checkObstacle);
+  connect(&m_model->m_rosNode, &QNode::obstacleUpdate, m_model, &AppModel::checkObstacle);
   // connect(m_model, &AppModel::obstacleUpdateUi, this, &RobotInterface::slot_obstacle);
 
   // Battery percentage
@@ -529,6 +529,7 @@ void RobotInterface::connections()
     QMessageBox::information(this, "Notification", "All target done", QMessageBox::Ok);
     
     // Clear all target
+
     for(int i = 2; i < 4; i++)
     {
       removeTarget(i);
