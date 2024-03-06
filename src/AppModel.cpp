@@ -335,6 +335,7 @@ void AppModel::batteryStatus(float battery)
 
 void AppModel::checkObstacle(QString id)
 {
+	CONSOLE << id;
     if(id == "warning")
     {
         is_obstacle = AppEnums::QObstacle::Human;

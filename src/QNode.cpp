@@ -206,14 +206,10 @@ void QNode::obstacleCallback(const std_msgs::String &message_holder) {
     CONSOLE << message_holder.data.c_str();
 
     // TODO: Add emit signal to GUI
-    QJsonDocument tmp;
-    tmp = QJsonDocument::fromJson(message_holder.data.c_str());
+    QString tmp;
+    tmp = QString::fromStdString(message_holder.data.c_str());
 
-    QJsonObject jobj = tmp.object();
-
-    QString id = jobj["id"].toString();
-
-    emit obstacleUpdate(id);
+    emit obstacleUpdate(tmp);
 }
 
 void QNode::set_goal(QString frame, double x, double y, double z, double w) {
