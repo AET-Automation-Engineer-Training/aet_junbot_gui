@@ -78,30 +78,62 @@ void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicNa
 
     if(m_key == "nodes")
     {
-    QJsonArray nodesArray = msg["nodes"].toArray();
-    QList<QString> names;
-    QList<int> xValues;
-    QList<int> yValues;
-    QList<int> zValues;
+        QJsonArray nodesArray = msg["nodes"].toArray();
+        QList<QString> names;
+        QList<int> xValues;
+        QList<int> yValues;
+        QList<int> zValues;
+        int loopTime = 1;
 
-    for (const QJsonValue &nodeValue : nodesArray) {
-        QJsonObject nodeObject = nodeValue.toObject();
-        QString name = nodeObject["name"].toString();
-        int x = nodeObject["x"].toInt();
-        int y = nodeObject["y"].toInt();
-        int z = nodeObject["z"].toInt();
 
-        CONSOLE << "Name:" << name;
-        CONSOLE << "X:" << x;
-        CONSOLE << "Y:" << y;
-        CONSOLE << "Z:" << z;
+        QJsonValue nodeValue1 = nodesArray[0];
+        QJsonObject nodeObject1 = nodeValue1.toObject();
+        QString name1 = nodeObject1["name"].toString();
+        int x1 = nodeObject1["x"].toInt();
+        int y1 = nodeObject1["y"].toInt();
+        int z1 = nodeObject1["z"].toInt();
+
+        CONSOLE << "Name:" << name1;
+        CONSOLE << "X:" << x1;
+        CONSOLE << "Y:" << y1;
+        CONSOLE << "Z:" << z1;
 
         names.append(name);
         xValues.append(x);
         yValues.append(y);
         zValues.append(z);
-    }
-        emit mqttSubTarget(names, xValues, yValues, zValues);
+
+        QJsonValue nodeValue2 = nodesArray[1];
+        QJsonObject nodeObject2 = nodeValue2.toObject();
+        QString name2 = nodeObject2["name"].toString();
+        int x2 = nodeObject2["x"].toInt();
+        int y2 = nodeObject2["y"].toInt();
+        int z2 = nodeObject2["z"].toInt();
+
+        CONSOLE << "Name:" << name2;
+        CONSOLE << "X:" << x2;
+        CONSOLE << "Y:" << y2;
+        CONSOLE << "Z:" << z2;
+
+        names.append(name2);
+        xValues.append(x2);
+        yValues.append(y2);
+        zValues.append(z2);
+
+        QJsonValue nodeValue3 = nodesArray[2];
+        QJsonObject nodeObject3 = nodeValue3.toObject();
+        int tmp_loop = nodeObject3["loopTime"].toString();
+
+        if(tmp_loop < 1)
+        {
+            loopTime = 1;
+        }
+        else 
+        {
+            loopTime = tmp_loop;
+        }
+
+        emit mqttSubTarget(names, xValues, yValues, zValues, loopTime);
     }
     else if(m_key == "password, username")
     {

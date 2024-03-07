@@ -60,7 +60,7 @@ signals:
     void mqttMessageChanged(QString msg);
     void mqttSubControl(QString msg);
     void mqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                        const QList<int>& y, const QList<int>& z);
+                        const QList<int>& y, const QList<int>& z, int loopTime);
     void mqttSubLogin(QString username, QString password);
     void MQTTConnected();
 public:

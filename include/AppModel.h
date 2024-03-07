@@ -74,7 +74,7 @@ public slots:
 
     void slotMqttSubControl(QString msg);
     void slotMqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                            const QList<int>& y, const QList<int>& z);
+                            const QList<int>& y, const QList<int>& z, int loopTime);
     bool slotMqttSubLogin(QString username, QString password);
 
     void initMQTTSub();

@@ -77,7 +77,7 @@ if(msg == "forward"){
 }
 
 void AppModel::slotMqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                            const QList<int>& y, const QList<int>& z)
+                            const QList<int>& y, const QList<int>& z, int loopTime)
 {
 
   std::vector<QRobotPose> goals;
@@ -100,19 +100,19 @@ void AppModel::slotMqttSubTarget(const QList<QString>& names, const QList<int>& 
   bool check;
 
   check = false;
-  check = m_rosNode.set_multi_goal("Frame", goals, goals_Id);
+  check = m_rosNode.set_multi_goal("Frame", goals, goals_Id, loopTimes);
 
-  connect(&m_rosNode, &QNode::updateGoalReached, this, [=](){
-    QMessageBox::information(NULL, "Notification",
-                                 "Robot has arrived the target!",
-                                 QMessageBox::Ok);
+//   connect(&m_rosNode, &QNode::updateGoalReached, this, [=](){
+//     QMessageBox::information(NULL, "Notification",
+//                                  "Robot has arrived the target!",
+//                                  QMessageBox::Ok);
 
-    emit acceptedTarget();  
-  });
+//     emit acceptedTarget();  
+//   });
 
-  connect(this, &AppModel::acceptedTarget, this, [=](){
-    m_rosNode.sendNextTarget();
-  });
+//   connect(this, &AppModel::acceptedTarget, this, [=](){
+//     m_rosNode.sendNextTarget();
+//   });
 }
 
 bool AppModel::slotMqttSubLogin(QString username, QString password)
