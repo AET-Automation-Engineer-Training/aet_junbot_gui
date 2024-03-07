@@ -76,8 +76,8 @@ if(msg == "forward"){
   }
 }
 
-void AppModel::slotMqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                            const QList<int>& y, const QList<int>& z, int loopTime)
+void AppModel::slotMqttSubTarget(const QList<QString>& names, const QList<double>& x, 
+                            const QList<double>& y, const QList<double>& z, int loopTime)
 {
 
   std::vector<QRobotPose> goals;
@@ -100,7 +100,7 @@ void AppModel::slotMqttSubTarget(const QList<QString>& names, const QList<int>& 
   bool check;
 
   check = false;
-  check = m_rosNode.set_multi_goal("Frame", goals, goals_Id, loopTimes);
+  check = m_rosNode.set_multi_goal("Frame", goals, goals_Id, loopTime);
 
 //   connect(&m_rosNode, &QNode::updateGoalReached, this, [=](){
 //     QMessageBox::information(NULL, "Notification",
@@ -389,6 +389,7 @@ void AppModel::checkRobotState()
     jobj["is_controlling_state"] = battery_state;
     jobj["is_mission_state"] = is_mission_state;
     jobj["time"] = m_dateTime.toString("dd.MM.yyyy hh:mm:ss");
+    jobj["obstacle"] = is_obstacle;
 
     QJsonDocument jSub = QJsonDocument(jobj);
 

@@ -59,8 +59,8 @@ signals:
     void MQTT_Received(QString msg);
     void mqttMessageChanged(QString msg);
     void mqttSubControl(QString msg);
-    void mqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                        const QList<int>& y, const QList<int>& z, int loopTime);
+    void mqttSubTarget(const QList<QString>& names, const QList<double>& x, 
+                        const QList<double>& y, const QList<double>& z, int loopTime);
     void mqttSubLogin(QString username, QString password);
     void MQTTConnected();
 public:

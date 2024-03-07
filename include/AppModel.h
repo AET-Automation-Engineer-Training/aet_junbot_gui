@@ -73,8 +73,8 @@ public slots:
     void checkRobotState();
 
     void slotMqttSubControl(QString msg);
-    void slotMqttSubTarget(const QList<QString>& names, const QList<int>& x, 
-                            const QList<int>& y, const QList<int>& z, int loopTime);
+    void slotMqttSubTarget(const QList<QString>& names, const QList<double>& x, 
+                            const QList<double>& y, const QList<double>& z, int loopTime);
     bool slotMqttSubLogin(QString username, QString password);
 
     void initMQTTSub();

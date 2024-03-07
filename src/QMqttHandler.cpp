@@ -80,35 +80,35 @@ void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicNa
     {
         QJsonArray nodesArray = msg["nodes"].toArray();
         QList<QString> names;
-        QList<int> xValues;
-        QList<int> yValues;
-        QList<int> zValues;
+        QList<double> xValues;
+        QList<double> yValues;
+        QList<double> zValues;
         int loopTime = 1;
 
 
         QJsonValue nodeValue1 = nodesArray[0];
         QJsonObject nodeObject1 = nodeValue1.toObject();
         QString name1 = nodeObject1["name"].toString();
-        int x1 = nodeObject1["x"].toInt();
-        int y1 = nodeObject1["y"].toInt();
-        int z1 = nodeObject1["z"].toInt();
+        double x1 = nodeObject1["x"].toDouble();
+        double y1 = nodeObject1["y"].toDouble();
+        double z1 = nodeObject1["z"].toDouble();
 
         CONSOLE << "Name:" << name1;
         CONSOLE << "X:" << x1;
         CONSOLE << "Y:" << y1;
         CONSOLE << "Z:" << z1;
 
-        names.append(name);
-        xValues.append(x);
-        yValues.append(y);
-        zValues.append(z);
+        names.append(name1);
+        xValues.append(x1);
+        yValues.append(y1);
+        zValues.append(z1);
 
         QJsonValue nodeValue2 = nodesArray[1];
         QJsonObject nodeObject2 = nodeValue2.toObject();
         QString name2 = nodeObject2["name"].toString();
-        int x2 = nodeObject2["x"].toInt();
-        int y2 = nodeObject2["y"].toInt();
-        int z2 = nodeObject2["z"].toInt();
+        double x2 = nodeObject2["x"].toDouble();
+        double y2 = nodeObject2["y"].toDouble();
+        double z2 = nodeObject2["z"].toDouble();
 
         CONSOLE << "Name:" << name2;
         CONSOLE << "X:" << x2;
@@ -122,7 +122,7 @@ void QMqttHandler::onMQTT_Received(const QByteArray &message, const QMqttTopicNa
 
         QJsonValue nodeValue3 = nodesArray[2];
         QJsonObject nodeObject3 = nodeValue3.toObject();
-        int tmp_loop = nodeObject3["loopTime"].toString();
+        int tmp_loop = nodeObject3["loopTime"].toInt();
 
         if(tmp_loop < 1)
         {
