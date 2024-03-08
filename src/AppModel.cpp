@@ -49,8 +49,8 @@ AppModel::~AppModel()
 
 void AppModel::slotMqttSubControl(QString msg)
 {
-  float liner = 0.5;
-  float turn = 0.5;
+  float liner = 0.3;
+  float turn = 0.3;
   bool is_all = false;
 
 if(msg == "forward"){
