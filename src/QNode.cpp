@@ -489,14 +489,43 @@ void QNode::move_base(char k, float speed_linear, float speed_turn) {
 
     char key = k;
 
+    CONSOLE << k;
+    CONSOLE << speed_turn;
+    CONSOLE << speed_linear;
+
+    float x = 0.0;
+    float y = 0.0;
+    float z = 0.0;
+    float th = 0.0;
+
     if (k == 'k') {
         // movebase_client->cancelAllGoals();
     }
 
-    float x = moveBindings[key][0];
-    float y = moveBindings[key][1];
-    float z = moveBindings[key][2];
-    float th = moveBindings[key][3];
+    // Left: turn = 0, speed != 0
+    if (key == 'J' || key == 'j')
+    {
+        if (speed_turn == 0.0 && speed_linear != 0.0) 
+        {
+            key = 'J';
+        }
+    }
+
+    // Right: turn = 0, speed != 0
+    if (key == 'L' || key == 'l')
+    {
+        if (speed_turn == 0.0 && speed_linear != 0.0) 
+        {
+            key = 'L';
+        }
+    }
+
+    CONSOLE << "Check " << key;
+
+    x = moveBindings[key][0];
+    y = moveBindings[key][1];
+    z = moveBindings[key][2];
+    th = moveBindings[key][3];
 
     float speed = speed_linear;
     float turn = speed_turn;
