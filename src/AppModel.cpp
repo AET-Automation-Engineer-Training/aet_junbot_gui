@@ -357,8 +357,8 @@ void AppModel::checkObstacle(QString id)
     }
     else 
     {
-        is_obstacle = AppEnums::QObstacle::Stuff;
-        emit obstacleUpdateUi(AppEnums::QObstacle::Stuff);
+        is_obstacle = AppEnums::QObstacle::NoObstacle;
+        emit obstacleUpdateUi(AppEnums::QObstacle::NoObstacle);
     }
 }
 
