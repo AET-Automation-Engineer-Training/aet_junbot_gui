@@ -258,23 +258,23 @@ void QLoginWidget::getLogindata()
 
     CONSOLE << m_model->getCurrentUserType();
 
-    checker = true;
+    // checker = true;
 
     if(checker){
 
-        ui->createUserAsAdmin_btn->setVisible(true);
-        ui->stackedWidget->setCurrentIndex(0);
+        // ui->createUserAsAdmin_btn->setVisible(true);
+        // ui->stackedWidget->setCurrentIndex(0);
         
-        // if(m_model->getCurrentUserType() == "admin")
-        // {
-        //     ui->createUserAsAdmin_btn->setVisible(true);
-        //     ui->stackedWidget->setCurrentIndex(0);
-        // }
-        // else 
-        // {
-        //     ui->createUserAsAdmin_btn->setVisible(false);
-        //     ui->stackedWidget->setCurrentIndex(0);
-        // }
+        if(m_model->getCurrentUserType() == "admin")
+        {
+            ui->createUserAsAdmin_btn->setVisible(true);
+            ui->stackedWidget->setCurrentIndex(0);
+        }
+        else 
+        {
+            ui->createUserAsAdmin_btn->setVisible(false);
+            ui->stackedWidget->setCurrentIndex(0);
+        }
     }
     else{
         QMessageBox::warning(NULL, "Login failed",
