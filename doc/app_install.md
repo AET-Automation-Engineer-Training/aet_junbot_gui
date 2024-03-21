@@ -19,9 +19,12 @@
 
 ```
 git clone git://code.qt.io/qt/qtmqtt.git
+cd qtmqtt
 git checkout <version of Qt> # version of Qt: v5.12.5
 sudo apt-get install qtbase5-private-dev
-qmake => make => make install
+qmake 
+make 
+sudo make install
 ```
 
 ## Config ROS plugin for QtCreator
@@ -50,7 +53,7 @@ sudo apt install libqt5svg5-dev
 
 2.1. Run Turtlebot 3 simulation
 
-<b> Note </b>: You need run SLAM before this step (if you do not have a map)
+<b> Note </b>: You need to run SLAM before this step (if you do not have a map)
 
 ```
 # Terminal 1: Simulation Node 
