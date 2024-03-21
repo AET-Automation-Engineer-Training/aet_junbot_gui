@@ -35,7 +35,7 @@ padding:0;
     </rect>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="robotConnect">
     <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -541,7 +541,8 @@ padding-left: 12px;</string>
        <cursorShape>ArrowCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/background/data/background/aet_backgound.jpeg);</string>
+       <string notr="true">border-image: url(:/background/data/background/viettel_background.jpg);
+</string>
       </property>
       <property name="text">
        <string/>
@@ -580,7 +581,6 @@ padding-left: 12px;</string>
        <property name="font">
         <font>
          <pointsize>21</pointsize>
-         <weight>50</weight>
          <bold>false</bold>
          <underline>false</underline>
         </font>
@@ -979,7 +979,6 @@ color: white;
        <property name="font">
         <font>
          <pointsize>21</pointsize>
-         <weight>50</weight>
          <bold>false</bold>
          <underline>false</underline>
         </font>
@@ -1189,8 +1188,6 @@ color: white;
    <layout class="QHBoxLayout" name="horizontalLayout_25"/>
   </widget>
  </widget>
- <resources>
-  <include location="../resources.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>
